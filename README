@@ -1,8 +1,0 @@
-Payments environment for Firefox Accounts.
-
-You will need:
-* docker (https://docs.docker.com/)
-* docker-compose (https://docs.docker.com/compose/)
-
-Then run:
-* docker-compose up
