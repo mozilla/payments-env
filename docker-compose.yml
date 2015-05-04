@@ -1,3 +1,16 @@
+nginx:
+  build: ./docker/nginx
+  command: nginx -c /etc/nginx/nginx.conf -g "daemon off;"
+  environment:
+    - TERM=xterm-256color
+  ports:
+    - '80:80'
+    - '8000:8000'
+  links:
+    - service:service
+  volumes:
+    - ./docker/source-links/payments-example/public/:/srv/example-site
+
 service:
   image: mozillamarketplace/payments-service
   command: supervisord -n -c /srv/payments-service/docker/supervisor.conf
@@ -9,7 +22,7 @@ service:
   links:
     - solitude:solitude
   volumes:
-    - ./payments-service/:/srv/payments-service
+    - ./docker/source-links/payments-service/:/srv/payments-service
   working_dir: /srv/payments-service
 
 solitude:
@@ -23,7 +36,7 @@ solitude:
   links:
     - mysql:mysql
   volumes:
-    - ./solitude/:/srv/solitude
+    - ./docker/source-links/solitude/:/srv/solitude
   working_dir: /srv/solitude
 
 mysql:
