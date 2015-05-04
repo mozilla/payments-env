@@ -1,5 +1,7 @@
 This is the main development environment for working on Mozilla payments.
 
+TODO: non-development environments are coming soon.
+
 You will need:
 * [Python](https://www.python.org/)
 * [Docker](https://docs.docker.com/)

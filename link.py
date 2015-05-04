@@ -16,6 +16,7 @@ def main():
 
     errors = False
     for name in [
+        'payments-example',
         'payments-service',
         'solitude',
     ]:
