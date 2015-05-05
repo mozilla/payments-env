@@ -9,7 +9,7 @@ nginx:
   links:
     - service:payments-service
   volumes:
-    - ./docker/source-links/payments-example/public/:/srv/example-site
+    - ./docker/source-links/payments-example/public/:/srv/payments-example
 
 service:
   image: mozillamarketplace/payments-service
