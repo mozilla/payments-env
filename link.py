@@ -18,6 +18,7 @@ def main():
     for name in [
         'payments-example',
         'payments-service',
+        'payments-ui',
         'solitude',
     ]:
         full_name = os.path.join(args.root, name)
