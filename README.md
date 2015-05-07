@@ -11,9 +11,12 @@ You will need:
 * [docker-compose](https://docs.docker.com/compose/)
 
 Build your environment:
+
 * Check out the following repositories somewhere on your machine:
   * [solitude](https://github.com/mozilla/solitude/)
+  * [payments-example](https://github.com/mozilla/payments-example/)
   * [payments-service](https://github.com/mozilla/payments-service/)
+  * [payments-ui](https://github.com/mozilla/payments-ui/)
 * Run ``python link.py`` to connect your source.
 * Run ``docker-compose build`` to build the containers.
 
