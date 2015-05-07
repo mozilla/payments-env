@@ -1,15 +1,13 @@
-# This is the default docker compose file that is useful for development
-# since it overrides the volumes with local source. Consider using
-# docker-compose-deploy.yml for deployments where you don't want the source.
+# This is for deployments, where the volume source is not overridden. For a
+# development set of containers, please see docker-compose.yml
+
+# nginx container doesn't have the code in it so set up the volumes.
 nginx:
   extends:
       file: configs/base.yml
       service: nginx
   links:
     - service:payments-service
-  volumes-from:
-    - payments-example
-    - payments-ui
 
 service:
   extends:
@@ -17,8 +15,6 @@ service:
       service: service
   links:
     - solitude:solitude
-  volumes:
-    - ./payments-service/:/srv/payments-service
 
 solitude:
   extends:
@@ -26,9 +22,6 @@ solitude:
       service: solitude
   links:
     - mysql:mysql
-  volumes:
-    - ./docker/source-links/solitude/:/srv/solitude
-  working_dir: /srv/solitude
 
 mysql:
   extends:
@@ -46,12 +39,8 @@ ui:
   extends:
       file: configs/base.yml
       service: ui
-  volumes:
-    - ./docker/source-links/payments-ui/public/:/srv/payments-ui
 
 example:
   extends:
       file: configs/base.yml
       service: example
-  volumes:
-    - ./docker/source-links/payments-example/public/:/srv/payments-example
