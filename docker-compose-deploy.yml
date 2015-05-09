@@ -8,6 +8,9 @@ nginx:
       service: nginx
   links:
     - service:payments-service
+  volumes:
+    - example
+    - ui
 
 service:
   extends:
