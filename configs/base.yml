@@ -1,0 +1,39 @@
+environment: &env
+- PYTHONUNBUFFERED=1
+- PYTHONDONTWRITEBYTECODE=1
+- TERM=xterm-256color
+
+nginx:
+  build: ../docker/nginx
+  command: nginx -c /etc/nginx/nginx.conf -g "daemon off;"
+  environment: *env
+  ports:
+    - '80:80'
+    - '8000:8000'
+
+service:
+  image: mozillamarketplace/payments-service
+  command: supervisord -n -c /srv/payments-service/docker/supervisor.conf
+  environment: *env
+  hostname: payments-service
+  working_dir: /srv/payments-service
+
+solitude:
+  image: mozillamarketplace/solitude
+  command: supervisord -n -c /srv/solitude/bin/docker/supervisor.conf
+  environment: *env
+  hostname: solitude
+  working_dir: /srv/solitude
+
+mysql:
+  image: mozillamarketplace/mysql-service
+  environment: *env
+
+mysqldata:
+  image: mozillamarketplace/mysql-data
+
+ui:
+  image: mozillapayments/payments-ui
+
+example:
+  image: mozillapayments/payments-example
