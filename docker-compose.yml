@@ -27,11 +27,19 @@ solitude:
       service: solitude
   links:
     - mysql:mysql
+    - auth:solitude-auth
   volumes:
     - ./docker/source-links/solitude/:/srv/solitude
   working_dir: /srv/solitude
   volumes_from:
     - logs
+
+auth:
+  extends:
+      file: configs/base.yml
+      service: auth
+  volumes:
+    - ./docker/source-links/solitude-auth/:/srv/auth
 
 mysql:
   extends:
