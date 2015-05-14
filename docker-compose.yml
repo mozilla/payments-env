@@ -18,7 +18,7 @@ service:
   links:
     - solitude:solitude
   volumes:
-    - ./payments-service/:/srv/payments-service
+    - ./docker/source-links/payments-service/:/srv/payments-service
 
 solitude:
   extends:
