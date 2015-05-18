@@ -24,8 +24,11 @@ def main():
         full_name = os.path.join(args.root, name)
         if not os.path.exists(full_name):
             print
-            print ('** Repository at {path} does not exist. '
-                   'Is it checked out?'.format(path=full_name))
+            print (
+                '** Repository at {path} does not exist. Run:\n'
+                'git clone git@github.com:mozilla/{repo_name}.git {path}'
+                .format(path=full_name, repo_name=name)
+            )
             print
             errors = True
             continue
