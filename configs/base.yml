@@ -21,7 +21,13 @@ service:
 solitude:
   image: mozillamarketplace/solitude
   command: supervisord -n -c /srv/solitude/bin/docker/supervisor.conf
-  environment: *env
+  environment:
+    - PYTHONUNBUFFERED=1
+    - PYTHONDONTWRITEBYTECODE=1
+    - TERM=xterm-256color
+    - BRAINTREE_MERCHANT_ID
+    - BRAINTREE_PUBLIC_KEY
+    - BRAINTREE_PRIVATE_KEY
   hostname: solitude
   working_dir: /srv/solitude
 
