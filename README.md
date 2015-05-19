@@ -1,6 +1,7 @@
 This is the main development environment for working on Mozilla payments.
 
-You will need:
+## Requirements
+
 * [Python](https://www.python.org/)
 * [Docker](https://docs.docker.com/)
   * On Mac you can run this with
@@ -9,17 +10,28 @@ You will need:
     [Kitematic](https://kitematic.com/)
 * [docker-compose](https://docs.docker.com/compose/)
 
-For deployment or testing:
+## Deployment / QA
+
+The following instructions are for using pre-built
+containers for deployment or QA purposes.
 
 * ``git clone https://github.com/mozilla/payments-env.git``
 * ``cd payments-env``
 * ``docker-compose -f docker-compose-deploy.yml up -d``
-* Find the IP address of your container then access that in a browser.
+* Find the IP address of your docker system.
   * On OS X using boot2docker you can find the address of a container by ``boot2docker ip``
+* Edit your ``/etc/hosts`` file so that the host ``pay.dev`` resolves to your IP.
+  For example, you might add this line to ``/etc/hosts``:
+
+        192.168.59.103  pay.dev
+
+* Run ``docker-compose up -d``
+* Open the example site at
+  [http://pay.dev/](http://pay.dev/)
+
+## Development
 
 The following instructions are for developing on the code only.
-
-For development:
 
 * Check out the following repositories somewhere on your machine:
   * [solitude](https://github.com/mozilla/solitude/)
@@ -32,24 +44,27 @@ For development:
     [export braintree variables](https://solitude.readthedocs.org/en/latest/topics/setup.html#braintree-settings)
     such as ``BRAINTREE_MERCHANT_ID=...``.
 * Run ``docker-compose build`` to build the containers.
-
-Start up all containers:
 * Run ``docker-compose up -d``
-
-Launch the example site:
-* Run ``boot2docker ip`` to find your IP.
-* You may wish to add an entry in ``/etc/hosts`` for this
-  such as ``pay.dev``.
-* Open the example site to test out payments at
+* Find the IP address of your docker system.
+  * On OS X using boot2docker you can find the address of a container by ``boot2docker ip``
+* Edit your ``/etc/hosts`` file so that the host ``pay.dev`` resolves to your IP.
+* Open the example site at
   [http://pay.dev/](http://pay.dev/)
 
 Now you're good to go!
 
-Update the environment:
-* Run ``git pull`` in each linked repository.
+## Updating Your Environment
+
+To keep everything up to date, run these commands:
+
+* Run ``git pull`` in each linked repository (or only in ``payments-env`` if
+  you're using pre-built containers).
 * Run ``docker-compose stop`` to make sure all containers are not running.
 * Run ``docker-compose pull`` to get the latest images.
 * Run ``docker-compose build`` to rebuild containers if necessary.
+* Run ``docker-compose up -d`` to start the new containers.
+
+## Configurations
 
 There are two docker configurations:
 * ``docker-compose.yml`` is for development purposes and requires the source to be checked out.
