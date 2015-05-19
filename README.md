@@ -27,6 +27,10 @@ For development:
   * [payments-service](https://github.com/mozilla/payments-service/)
   * [payments-ui](https://github.com/mozilla/payments-ui/)
 * Run ``python link.py`` to connect your source.
+* Export any project-specific environment variables in your shell.
+  * Example: for Solitude you'll need to
+    [export braintree variables](https://solitude.readthedocs.org/en/latest/topics/setup.html#braintree-settings)
+    such as ``BRAINTREE_MERCHANT_ID=...``.
 * Run ``docker-compose build`` to build the containers.
 
 Start up all containers:
@@ -48,5 +52,5 @@ Update the environment:
 * Run ``docker-compose build`` to rebuild containers if necessary.
 
 There are two docker configurations:
-* ``docker-compose.yml`` for development purposes and requires the source to be checked out.
-* ``docker-compose-deploy.yml`` for deployment purposes and contain the application source.
+* ``docker-compose.yml`` is for development purposes and requires the source to be checked out.
+* ``docker-compose-deploy.yml`` is for deployment purposes and contain the application source.
