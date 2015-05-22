@@ -7,9 +7,9 @@ nginx:
       service: nginx
   links:
     - service:payments-service
-  volumes-from:
-    - payments-example
-    - payments-ui
+  volumes_from:
+    - example
+    - ui
 
 service:
   extends:
