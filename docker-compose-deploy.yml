@@ -47,3 +47,8 @@ example:
   extends:
       file: configs/base.yml
       service: example
+
+logs:
+  extends:
+      file: configs/base.yml
+      service: logs
