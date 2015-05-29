@@ -9,6 +9,7 @@ nginx:
     - service:payments-service
   volumes_from:
     - example
+    - logs
     - ui
 
 service:
@@ -29,6 +30,8 @@ solitude:
   volumes:
     - ./docker/source-links/solitude/:/srv/solitude
   working_dir: /srv/solitude
+  volumes_from:
+    - logs
 
 mysql:
   extends:
@@ -55,3 +58,8 @@ example:
       service: example
   volumes:
     - ./docker/source-links/payments-example/public/:/srv/payments-example
+
+logs:
+  extends:
+      file: configs/base.yml
+      service: logs

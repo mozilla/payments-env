@@ -43,3 +43,6 @@ ui:
 
 example:
   image: mozillapayments/payments-example
+
+logs:
+  build: ../docker/logs
