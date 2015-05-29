@@ -10,6 +10,7 @@ nginx:
     - service:payments-service
   volumes_from:
     - example
+    - logs
     - ui
 
 service:
@@ -25,6 +26,8 @@ solitude:
       service: solitude
   links:
     - mysql:mysql
+  volumes_from:
+    - logs
 
 mysql:
   extends:
