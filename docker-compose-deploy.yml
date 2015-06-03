@@ -33,7 +33,7 @@ solitude:
 auth:
   extends:
       file: configs/base.yml
-      serice: auth
+      service: auth
 
 mysql:
   extends:
