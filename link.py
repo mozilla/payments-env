@@ -11,7 +11,7 @@ def main():
     args = parser.parse_args()
     if not args.root:
         args.root = raw_input('What directory is your source code in? ')
-    args.root = os.path.normpath(os.path.expanduser(args.root))
+    args.root = os.path.abspath(os.path.expanduser(args.root))
     payments_env_root = os.path.dirname(__file__)
 
     errors = False
