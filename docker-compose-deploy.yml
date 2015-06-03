@@ -26,8 +26,14 @@ solitude:
       service: solitude
   links:
     - mysql:mysql
+    - auth:solitude-auth
   volumes_from:
     - logs
+
+auth:
+  extends:
+      file: configs/base.yml
+      serice: auth
 
 mysql:
   extends:
