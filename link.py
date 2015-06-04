@@ -20,6 +20,7 @@ def main():
         'payments-service',
         'payments-ui',
         'solitude',
+        'solitude-auth',
     ]:
         full_name = os.path.join(args.root, name)
         if not os.path.exists(full_name):
