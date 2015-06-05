@@ -26,6 +26,7 @@ solitude:
     - PYTHONDONTWRITEBYTECODE=1
     - TERM=xterm-256color
     - BRAINTREE_MERCHANT_ID
+    - SOLITUDE_BRAINTREE_PROXY=http://solitude-auth:2603/v1/braintree
   hostname: solitude
   working_dir: /srv/solitude
 
