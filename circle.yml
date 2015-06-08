@@ -1,0 +1,14 @@
+machine:
+    services:
+        - docker
+    hosts:
+        pay.dev: 127.0.0.1
+
+dependencies:
+    override:
+        - sudo pip install -U docker-compose
+
+test:
+    override:
+        - docker-compose -f docker-compose-deploy.yml up -d
+        - curl -s -o /dev/null -w "%{http_code}" http://pay.dev:8000/api/
