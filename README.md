@@ -35,11 +35,12 @@ The following instructions are for developing on the code only.
 
 * Check out the following repositories somewhere on your machine under the same
   root directory:
-  * [solitude](https://github.com/mozilla/solitude/)
-  * [solitude-auth](https://github.com/mozilla/solitude-auth/)
+  * [kinto](https://github.com/mozilla-services/kinto/)
   * [payments-example](https://github.com/mozilla/payments-example/)
   * [payments-service](https://github.com/mozilla/payments-service/)
   * [payments-ui](https://github.com/mozilla/payments-ui/)
+  * [solitude](https://github.com/mozilla/solitude/)
+  * [solitude-auth](https://github.com/mozilla/solitude-auth/)
 * Run ``python link.py`` to connect your sources.
 * Export any project-specific environment variables in your shell.
   * Example: for Solitude you'll need to

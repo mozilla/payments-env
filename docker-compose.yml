@@ -53,6 +53,23 @@ mysqldata:
       file: configs/base.yml
       service: mysqldata
 
+postgres:
+  image: postgres
+  environment:
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+
+# FxA storage server.
+kinto:
+  build: ./docker/source-links/kinto/
+  links:
+    - postgres:db
+  ports:
+   - "8888:8888"
+  environment:
+    CLIQUET_SESSION_URL: postgres://postgres:postgres@db/postgres
+    CLIQUET_STORAGE_URL: postgres://postgres:postgres@db/postgres
+
 ui:
   extends:
       file: configs/base.yml
