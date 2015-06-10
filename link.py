@@ -16,6 +16,7 @@ def main():
 
     errors = False
     for name in [
+        'kinto',
         'payments-example',
         'payments-service',
         'payments-ui',
