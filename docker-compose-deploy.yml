@@ -4,8 +4,8 @@
 # nginx container doesn't have the code in it so set up the volumes.
 nginx:
   extends:
-      file: configs/base.yml
-      service: nginx
+    file: configs/base.yml
+    service: nginx
   links:
     - service:payments-service
   volumes_from:
@@ -15,15 +15,15 @@ nginx:
 
 service:
   extends:
-      file: configs/base.yml
-      service: service
+    file: configs/base.yml
+    service: service
   links:
     - solitude:solitude
 
 solitude:
   extends:
-      file: configs/base.yml
-      service: solitude
+    file: configs/base.yml
+    service: solitude
   links:
     - mysql:mysql
     - auth:solitude-auth
@@ -32,32 +32,44 @@ solitude:
 
 auth:
   extends:
-      file: configs/base.yml
-      service: auth
+    file: configs/base.yml
+    service: auth
 
 mysql:
   extends:
-      file: configs/base.yml
-      service: mysql
+    file: configs/base.yml
+    service: mysql
   volumes_from:
     - mysqldata
 
 mysqldata:
   extends:
-      file: configs/base.yml
-      service: mysqldata
+    file: configs/base.yml
+    service: mysqldata
+
+postgres:
+  extends:
+    file: configs/base.yml
+    service: postgres
+
+kinto:
+  extends:
+    file: configs/base.yml
+    service: kinto
+  links:
+    - postgres:db
 
 ui:
   extends:
-      file: configs/base.yml
-      service: ui
+    file: configs/base.yml
+    service: ui
 
 example:
   extends:
-      file: configs/base.yml
-      service: example
+    file: configs/base.yml
+    service: example
 
 logs:
   extends:
-      file: configs/base.yml
-      service: logs
+    file: configs/base.yml
+    service: logs
