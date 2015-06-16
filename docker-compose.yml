@@ -3,8 +3,8 @@
 # docker-compose-deploy.yml for deployments where you don't want the source.
 nginx:
   extends:
-      file: configs/base.yml
-      service: nginx
+    file: configs/base.yml
+    service: nginx
   links:
     - service:payments-service
   volumes_from:
@@ -14,8 +14,8 @@ nginx:
 
 service:
   extends:
-      file: configs/base.yml
-      service: service
+    file: configs/base.yml
+    service: service
   links:
     - solitude:solitude
   volumes:
@@ -23,8 +23,8 @@ service:
 
 solitude:
   extends:
-      file: configs/base.yml
-      service: solitude
+    file: configs/base.yml
+    service: solitude
   links:
     - mysql:mysql
     - auth:solitude-auth
@@ -36,55 +36,50 @@ solitude:
 
 auth:
   extends:
-      file: configs/base.yml
-      service: auth
+    file: configs/base.yml
+    service: auth
   volumes:
     - ./docker/source-links/solitude-auth/:/srv/auth
 
 mysql:
   extends:
-      file: configs/base.yml
-      service: mysql
+    file: configs/base.yml
+    service: mysql
   volumes_from:
     - mysqldata
 
 mysqldata:
   extends:
-      file: configs/base.yml
-      service: mysqldata
+    file: configs/base.yml
+    service: mysqldata
 
 postgres:
-  image: postgres
-  environment:
-    POSTGRES_USER: postgres
-    POSTGRES_PASSWORD: postgres
+  extends:
+    file: configs/base.yml
+    service: postgres
 
-# FxA storage server.
 kinto:
-  build: ./docker/source-links/kinto/
+  extends:
+    file: configs/base.yml
+    service: kinto
   links:
     - postgres:db
-  ports:
-   - "8888:8888"
-  environment:
-    CLIQUET_SESSION_URL: postgres://postgres:postgres@db/postgres
-    CLIQUET_STORAGE_URL: postgres://postgres:postgres@db/postgres
 
 ui:
   extends:
-      file: configs/base.yml
-      service: ui
+    file: configs/base.yml
+    service: ui
   volumes:
     - ./docker/source-links/payments-ui/public/:/srv/payments-ui
 
 example:
   extends:
-      file: configs/base.yml
-      service: example
+    file: configs/base.yml
+    service: example
   volumes:
     - ./docker/source-links/payments-example/public/:/srv/payments-example
 
 logs:
   extends:
-      file: configs/base.yml
-      service: logs
+    file: configs/base.yml
+    service: logs
