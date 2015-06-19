@@ -4,7 +4,7 @@ environment: &env
 - TERM=xterm-256color
 
 nginx:
-  build: ../docker/nginx
+  image: mozillapayments/nginx
   command: nginx -c /etc/nginx/nginx.conf -g "daemon off;"
   environment: *env
   ports:
