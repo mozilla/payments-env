@@ -46,9 +46,6 @@ mysql:
   image: mozillamarketplace/mysql-service
   environment: *env
 
-mysqldata:
-  image: mozillamarketplace/mysql-data
-
 postgres:
   image: postgres
   environment:

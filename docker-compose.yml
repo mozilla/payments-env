@@ -45,13 +45,6 @@ mysql:
   extends:
     file: configs/base.yml
     service: mysql
-  volumes_from:
-    - mysqldata
-
-mysqldata:
-  extends:
-    file: configs/base.yml
-    service: mysqldata
 
 postgres:
   extends:
