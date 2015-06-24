@@ -77,3 +77,6 @@ To keep everything up to date, run these commands:
 There are two docker configurations:
 * ``docker-compose.yml`` is for development purposes and requires the source to be checked out.
 * ``docker-compose-deploy.yml`` is for deployment purposes and contain the application source.
+
+## Updating images
+If you update the nginx image, run the command ``build-and-push.sh``. This will update the image and push it to docker hub.
