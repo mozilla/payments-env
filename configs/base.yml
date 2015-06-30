@@ -14,7 +14,14 @@ nginx:
 service:
   image: mozillamarketplace/payments-service
   command: supervisord -n -c /srv/payments-service/docker/supervisor.conf
-  environment: *env
+  environment:
+  - PYTHONUNBUFFERED=1
+  - PYTHONDONTWRITEBYTECODE=1
+  - TERM=xterm-256color
+  - SERVICE_EMAIL_BACKEND
+  - SERVICE_EMAIL_HOST
+  - SERVICE_EMAIL_HOST_USER
+  - SERVICE_EMAIL_HOST_PASSWORD
   hostname: payments-service
   working_dir: /srv/payments-service
 
@@ -22,11 +29,11 @@ solitude:
   image: mozillamarketplace/solitude
   command: supervisord -n -c /srv/solitude/bin/docker/supervisor.conf
   environment:
-    - PYTHONUNBUFFERED=1
-    - PYTHONDONTWRITEBYTECODE=1
-    - TERM=xterm-256color
-    - BRAINTREE_MERCHANT_ID
-    - SOLITUDE_BRAINTREE_PROXY=http://solitude-auth:2603/v1/braintree
+  - PYTHONUNBUFFERED=1
+  - PYTHONDONTWRITEBYTECODE=1
+  - TERM=xterm-256color
+  - BRAINTREE_MERCHANT_ID
+  - SOLITUDE_BRAINTREE_PROXY=http://solitude-auth:2603/v1/braintree
   hostname: solitude
   working_dir: /srv/solitude
 
