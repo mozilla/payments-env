@@ -7,8 +7,9 @@ machine:
 dependencies:
     override:
         - sudo pip install -U docker-compose
+        - pip install -r requirements.txt
 
 test:
     override:
         - docker-compose -f docker-compose-deploy.yml up -d
-        - curl -s -o /dev/null -w "%{http_code}" http://pay.dev:8000/api/
+        - nosetests
