@@ -1,5 +1,7 @@
 This is the main development environment for working on Mozilla payments.
 
+[![Circle CI](https://circleci.com/gh/mozilla/payments-env.svg?style=svg)](https://circleci.com/gh/mozilla/payments-env)
+
 ## Requirements
 
 * [Python](https://www.python.org/)
@@ -80,3 +82,6 @@ There are two docker configurations:
 
 ## Updating images
 If you update the nginx image, run the command ``build-and-push.sh``. This will update the image and push it to docker hub.
+
+## CircleCI
+Test are run on circle ci for payments-env. Need to figure out how to run them regularly.
