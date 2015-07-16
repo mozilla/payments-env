@@ -50,11 +50,6 @@ The following instructions are for developing on the code only.
     such as ``BRAINTREE_MERCHANT_ID=...``.
 * Run ``docker-compose pull`` to pull images and build the containers.
 * Run ``docker-compose up -d``
-* Set up your Solitude database to mirror your Braintree sandbox by running:
-  ``python manage.py braintree_config`` in the Solitude container.
-  * You will need to add some products to your sandbox; the script will guide you.
-  * You can shell into the Solitude container easily with
-    [docker-utils](https://pypi.python.org/pypi/docker-utils).
 * Find the IP address of your docker system.
   * On OS X using boot2docker you can find the address of a container by
     ``boot2docker ip``
