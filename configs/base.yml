@@ -23,6 +23,8 @@ service:
   - SERVICE_EMAIL_HOST
   - SERVICE_EMAIL_HOST_USER
   - SERVICE_EMAIL_HOST_PASSWORD
+  - SERVICE_FXA_CREDENTIALS
+  - SERVICE_FXA_OAUTH_URL
   hostname: payments-service
   working_dir: /srv/payments-service
 
