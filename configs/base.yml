@@ -64,7 +64,7 @@ postgres:
 
 # FxA storage server.
 kinto:
-  image: mozillastorage/kinto
+  image: kinto/kinto-server
   ports:
    - "8888:8888"
   environment:
