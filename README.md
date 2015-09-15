@@ -37,7 +37,7 @@ The following instructions are for developing on the code only.
 
 * Check out the following repositories somewhere on your machine under the same
   root directory:
-  * [kinto](https://github.com/mozilla-services/kinto/)
+  * [kinto](https://github.com/Kinto/kinto/)
   * [payments-example](https://github.com/mozilla/payments-example/)
   * [payments-service](https://github.com/mozilla/payments-service/)
   * [payments-ui](https://github.com/mozilla/payments-ui/)
