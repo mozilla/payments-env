@@ -5,6 +5,7 @@ This is the main development environment for working on Mozilla payments.
 ## Requirements
 
 * [Python](https://www.python.org/)
+* [Node.js](https://nodejs.org/en/) (`brew install node` on Mac)
 * [Docker](https://www.docker.com/toolbox) (Docker Toolbox for Mac/Windows)
 
 ## Deployment / QA
