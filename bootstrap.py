@@ -21,10 +21,8 @@ PAYMENT_ENV_DIR = os.path.abspath(os.path.dirname(__file__))
 LOCAL_ENV = Template((os.fdopen(os.open(
     os.path.join(PAYMENT_ENV_DIR, 'env', 'local.env.dist'),
     os.O_RDWR), "r+").read()))
-SEPARATOR = """
-###############################################################################
-💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰
-###############################################################################"""
+SEPARATOR = "\n###############################################################################\n💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰 💰\n###############################################################################"  # nopep8
+
 
 class ShellCommandError(Exception):
     pass
@@ -35,8 +33,7 @@ def main():
 
     term = Terminal()
 
-    print (
-"""{s}
+    print ("""{s}
 
 Hi there! 😀
 
@@ -50,7 +47,7 @@ If you don't have a Braintree account yet or don't know your API Keys,
 go to {t.blue_underline}braintree.com{t.normal} and create an account/log in, then go to
 {t.blue_underline}solitude.readthedocs.org/latest/topics/setup.html#braintree-settings{t.normal}
 to see how to get your API keys.
-""").format(
+""").format(  # nopep8
         dir=os.path.abspath(os.path.join(PAYMENT_ENV_DIR, '..', args.dir)),
         s=SEPARATOR, t=term
     )
@@ -59,22 +56,21 @@ to see how to get your API keys.
 
     create_local_env(env_vars)
 
-    print (
-"""{s}
+    print ("""{s}
 
 Okay, that's all finished. 👍
 
 Next we're going to check out the {t.red}{t.bold}Mozilla Payments{t.normal} git repositories to:
 
 {dir}
-""").format(dir=os.path.abspath(os.path.join(PAYMENT_ENV_DIR, '..', args.dir)),
+"""  # nopep8
+).format(dir=os.path.abspath(os.path.join(PAYMENT_ENV_DIR, '..', args.dir)),
             s=SEPARATOR, t=term)
 
     # Create our payments repos.
     create_folder_and_checkout_repos(args.dir)
 
-    print(
-"""{s}
+    print("""{s}
 
 Repositories downloaded! ✅
 
@@ -85,8 +81,7 @@ Make sure you have a good internet connection. Maybe get a coffee 😉
 """.format(s=SEPARATOR))
     bootstrap_docker()
 
-    print(
-"""{s}
+    print("""{s}
 
 Docker all set up! ✅
 
@@ -95,8 +90,7 @@ Payments UI needs some NPM/bower modules to run; we'll install them now.
 
     bootstrap_ui(args.dir)
 
-    print (
-"""{s}
+    print ("""{s}
 
 Setup complete. 👏
 
@@ -110,7 +104,7 @@ Now {t.blue_underline}pay.dev{t.normal} resolves to your Docker IP.
 
 2. Add this to your .bashrc, .profile, .zshrc, or similar:
 
-    # Mozilla Payments Environment
+    # Mozilla Payments Egnvironment
     source {dir}/env/local.env
 
 3. Run the payments-ui server:
@@ -121,11 +115,13 @@ Now {t.blue_underline}pay.dev{t.normal} resolves to your Docker IP.
 Have fun! 💰
 """).format(t=term, dir=os.path.abspath(os.path.join(PAYMENT_ENV_DIR)),
             s=SEPARATOR,
-            ui_directory=os.path.abspath(os.path.join(PAYMENT_ENV_DIR, '..',
-                                                   args.dir, 'payments-ui')))
-    # TODO: Use `echo "$(docker-machine ip default) pay.dev" | sudo tee -a /etc/hosts` to
-    # configure the IP address automatically.
+            ui_directory=os.path.abspath(
+                os.path.join(PAYMENT_ENV_DIR, '..', args.dir, 'payments-ui')))
+    # TODO: Use
+    # `echo "$(docker-machine ip default) pay.dev" | sudo tee -a /etc/hosts`
+    # to configure the IP address automatically.
     # set_ip_address_in_hosts()
+
 
 def bootstrap_docker():
     os.chdir(os.path.abspath(os.path.join(PAYMENT_ENV_DIR)))
@@ -168,7 +164,7 @@ def create_folder_and_checkout_repos(directory):
 def create_local_env(variables):
     env_file = os.fdopen(os.open(os.path.join(PAYMENT_ENV_DIR, 'env',
                                               'local.env'),
-                                 os.O_RDWR|os.O_CREAT),
+                                 os.O_RDWR | os.O_CREAT),
                          "w+")
 
     env_file.write(LOCAL_ENV.safe_substitute(
@@ -209,7 +205,8 @@ def get_environment_variables():
 def shell(command):
     if subprocess.call(command, shell=True) != 0:
         raise ShellCommandError(
-            """Failed to execute command:\n{command}""".format(command=command))
+            """Failed to execute command:\n{command}""".format(
+                command=command))
 
 
 if __name__ == '__main__':
