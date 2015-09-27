@@ -47,7 +47,8 @@ If you don't have a Braintree account yet or don't know your API Keys,
 go to {t.blue_underline}braintree.com{t.normal} and create an account/log in, then go to
 {t.blue_underline}solitude.readthedocs.org/latest/topics/setup.html#braintree-settings{t.normal}
 to see how to get your API keys.
-""").format(  # nopep8
+"""  # noqa
+).format(
         dir=os.path.abspath(os.path.join(PAYMENT_ENV_DIR, '..', args.dir)),
         s=SEPARATOR, t=term
     )
@@ -63,7 +64,7 @@ Okay, that's all finished. 👍
 Next we're going to check out the {t.red}{t.bold}Mozilla Payments{t.normal} git repositories to:
 
 {dir}
-"""  # nopep8
+"""  # noqa
 ).format(dir=os.path.abspath(os.path.join(PAYMENT_ENV_DIR, '..', args.dir)),
             s=SEPARATOR, t=term)
 
